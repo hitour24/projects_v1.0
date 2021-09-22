@@ -33,7 +33,8 @@ export default class Project extends Entity {
         date_frozen: string,
         date_success: string,
         requirements_hr_addit_services: boolean,
-        vital: boolean
+        vital: boolean,
+        id_custom: string,
     }) {
         super();
         this.tableName = 'projects';
@@ -62,6 +63,7 @@ export default class Project extends Entity {
             date_completion,
             date_frozen,
             date_success,
+            id_custom
             // requirements_hr_addit_services,
             // vital
         } = this.data;
@@ -85,8 +87,9 @@ export default class Project extends Entity {
             date_start,
             date_completion,
             date_frozen,
-            date_success
-            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING id;`,
+            date_success,
+            id_custom
+            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) RETURNING id;`,
             [
                 title,
                 description,
@@ -107,6 +110,7 @@ export default class Project extends Entity {
                 !date_completion ? null : date_completion,
                 !date_frozen ? null : date_frozen,
                 !date_success ? null : date_success,
+                id_custom
                 // requirements_hr_addit_services,
                 // vital
             ]);
